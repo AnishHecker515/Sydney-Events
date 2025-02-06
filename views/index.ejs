@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sydney Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <%- include("./header") %>
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold text-center mb-5">Upcoming Events in Sydney</h1>
+        
+        <% if (typeof events !== 'undefined' && events.length > 0) { %>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <% events.forEach(event => { %>
+                    <div class="bg-white p-5 rounded-lg shadow-lg">
+                        <h2 class="text-xl font-semibold"><%= event.title %></h2>
+                        <p class="text-gray-500"><%= event.date %> | <%= event.location %></p>
+                        <p class="mt-2 text-sm text-gray-700"><%= event.description %></p>
+                        <form action="/get-tickets" method="POST" class="mt-4">
+                            <input type="hidden" name="eventLink" value="<%= event.link %>">
+                            <input type="email" name="email" placeholder="Enter your email" required class="border p-2 rounded w-full mb-2">
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">GET TICKETS</button>
+                        </form>
+                    </div>
+                <% }) %>
+            </div>
+        <% } else { %>
+            <p class="text-center text-gray-600">No events found. Please check back later!</p>
+        <% } %>
+    </div>
+    
+    <%- include("./footer") %>
+
+</body>
+</html>

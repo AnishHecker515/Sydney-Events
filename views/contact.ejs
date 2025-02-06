@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sydney Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <%- include("./header") %>
+    <div class="container mx-auto p-5">
+        <h2 class="text-3xl font-bold text-center mb-5">Contact Us</h2>
+        <form action="/contact" method="POST" class="max-w-lg mx-auto bg-white p-5 rounded-lg shadow-lg">
+            <input type="text" name="name" placeholder="Your Name" required class="border p-2 rounded w-full mb-4">
+            <input type="email" name="email" placeholder="Your Email" required class="border p-2 rounded w-full mb-4">
+            <textarea name="message" placeholder="Your Message" rows="5" required class="border p-2 rounded w-full mb-4"></textarea>
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full">Send Message</button>
+        </form>
+    </div>
+    <%- include("./footer") %> 
+</body>
+</html>
